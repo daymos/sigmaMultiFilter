@@ -24,6 +24,7 @@ server.route({
     method: 'GET',
     path: '/data',
     handler: function(request,reply){
+        console.log('GET request: ', request.url.path)
         reply(JSON.stringify(preppedData))
     }
 })

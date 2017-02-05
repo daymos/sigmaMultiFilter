@@ -55,4 +55,11 @@ h2.underline {
 input[type=range] {
     width: 160px;
 }
+select {
+    margin: 5px auto;
+}
+
+#addFilter {
+margin-left: 5px;
+}
 

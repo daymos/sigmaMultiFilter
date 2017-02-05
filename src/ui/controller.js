@@ -1,13 +1,15 @@
 var server = 'http://localhost:3000/data';
 var s = new sigma('graph-container')
+
 var fetchedData = null;
 var currentData = null;
+
 var arrayOfCategories = ['cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7'] 
 
 var buildUrl = (url, param = 0) => `${url}?degree=${param}`
 
 
-// apply one filter
+// applies one filter
 var filterBycategory = (obj, param) => {
     return new Promise((resolve, reject) => {
         if (param === 'all') resolve(obj)
@@ -24,16 +26,19 @@ var filterBycategory = (obj, param) => {
     })
 }
 
+//get available categories from fetched data
+
+
+
 // fetch data and parse it
 var fetchData = e => {
     var url = (e === undefined)? buildUrl(server, 0) : buildUrl(server, e.target.value);
     return fetch(url)              // makes request to server
         .then(data => data.json())  // parses the json
+        .then(data => {console.log(data); return data})
         .then(data => {fetchedData = data; currentData = null; return data}) //store current data
 
 };
-
-
 
 // updates global sigmaJS instance
 var render = (data) => { 
@@ -44,10 +49,12 @@ var render = (data) => {
 };
 
 var clearFilter = () => {
+    currentData = null;
     $('#filterContainer').empty()
 }
-
+//
 //event listeners
+//
 $('document').ready(() => {
     fetchData()
         .then(render)
@@ -55,6 +62,8 @@ $('document').ready(() => {
 
 
 $('#min-degree').change((e) => {
+    $('#min-degree-val')[0].textContent = e.target.value
+    clearFilter()
     fetchData(e)
         .then(render)
 })
@@ -79,9 +88,7 @@ $('#addFilter').click(e => {
 
 
 $('#reset-btn').click( ()=> {
-    currentData = null;
     clearFilter()
     render(fetchedData)
 })
-
 
