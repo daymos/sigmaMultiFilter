@@ -1,6 +1,5 @@
 # Multi filter plugin for SigmaJS
 
-
 This is a plugin for SigmaJS, that provides client-side multifiltering. 
 
 To install the dependancies, run from root folder:
@@ -12,7 +11,7 @@ To start the server:
 npm run start
 ```
 
-The ui is now accessible at `http://localhost:3000/index.html
+The ui is now accessible at `http://localhost:3000`
 
 The data should be fed to the ui in the following format:
 
@@ -67,3 +66,5 @@ The data should be fed to the ui in the following format:
 ```
 
 A valid data sample is returned by the server at `http://localhost:3000/data'
+
+The sigma degree filter is replace by a fetch GET request to: `~/data/degree=1`

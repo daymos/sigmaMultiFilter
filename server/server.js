@@ -24,7 +24,7 @@ server.route({
     method: 'GET',
     path: '/',
     handler: function(request,reply){
-        reply('index.html')
+        reply.redirect('/index.html')
     }
 })
 
