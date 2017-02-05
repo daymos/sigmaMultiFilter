@@ -3,9 +3,7 @@ var s = new sigma('graph-container')
 var fetchedData = null;
 var currentData = null;
 
-
 var buildUrl = (url, param = 0) => `${url}?degree=${param}`
-
 
 // applies one filter
 var filterBycategory = (obj, param) => {
