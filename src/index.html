@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Moogsoft graph visualisation tool</title>
-        <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
     </head>
     <body>
         <div id="graph-container"></div>
@@ -26,11 +26,9 @@
             <div id="dump" class="hidden"></div>
         </div>
 
-        <script src='./sigma.min.js'></script>
-        <script src='./sigma.plugins.filter.min.js'></script>
-        <script src='./sigma.parsers.json.min.js'></script>
-        <script src='./jquery-3.1.1.min.js'></script>
-        <script src='./domHelpers.js'></script>
-        <script src='./controller.js'></script>
+        <script src='./vendor/sigma.min.js'></script>
+        <script src='./vendor/jquery-3.1.1.min.js'></script>
+        <script src='./js/config.js'></script>
+        <script src='./js/controller.js'></script>
     </body>
 </html>

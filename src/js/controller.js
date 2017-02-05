@@ -1,10 +1,8 @@
-var server = 'http://localhost:3000/data';
 var s = new sigma('graph-container')
 
 var fetchedData = null;
 var currentData = null;
 
-var arrayOfCategories = ['cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7'] 
 
 var buildUrl = (url, param = 0) => `${url}?degree=${param}`
 
@@ -26,21 +24,18 @@ var filterBycategory = (obj, param) => {
     })
 }
 
-//get available categories from fetched data
-
-
 
 // fetch data and parse it
 var fetchData = e => {
-    var url = (e === undefined)? buildUrl(server, 0) : buildUrl(server, e.target.value);
+    var url = (e === undefined) ? buildUrl(server, 0) : buildUrl(server, e.target.value);
     return fetch(url)              // makes request to server
         .then(data => data.json())  // parses the json
-        .then(data => {console.log(data); return data})
-        .then(data => {fetchedData = data; currentData = null; return data}) //store current data
+        .then(data => { console.log(data); return data }) //log response
+        .then(data => { fetchedData = data; currentData = null; return data }) //store fetched data for the filters
 
 };
 
-// updates global sigmaJS instance
+// updat global sigmaJS instance
 var render = (data) => { 
     s.graph.clear();
     s.graph.read(data);
@@ -48,13 +43,16 @@ var render = (data) => {
     s.refresh();
 };
 
+// init filter pane
 var clearFilter = () => {
     currentData = null;
     $('#filterContainer').empty()
 }
+
 //
 //event listeners
 //
+
 $('document').ready(() => {
     fetchData()
         .then(render)
@@ -68,7 +66,7 @@ $('#min-degree').change((e) => {
         .then(render)
 })
 
-
+// individual filter controller
 $('#addFilter').click(e => {
     $('#filterContainer').append(`<div><span><select></select></span>`);  
     arrayOfCategories.forEach((el, i) => {

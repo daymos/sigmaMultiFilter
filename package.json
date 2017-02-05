@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "cd server && npm install",
+    "open": "open http://localhost:3000/index.html",
+    "start": "cd server && node server.js && npm run open"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "sigma": "^1.2.0"
-  }
+  "license": "ISC"
 }

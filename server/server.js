@@ -1,16 +1,24 @@
 'use strict'
-
-var Hapi = require('hapi')
+var Path = require('path');
+var Hapi = require('hapi');
+var Inert = require('inert');
 var fs = require('fs');
 var obj = JSON.parse(fs.readFileSync('arctic.json', 'utf8'));
 var preppedData = JSON.parse(fs.readFileSync('preppedArctic.json', 'utf8'));
-var utils = require('./utils.js')
+var utils = require('./utils.js');
 
 var server = new Hapi.Server();
 server.connection({ 
     port: process.env.PORT || 3000, 
-    routes: { cors: true }
+    routes: { 
+        cors: true,
+        files:{
+            relativeTo: Path.join(__dirname, '../src')
+        }
+    }
 });
+
+server.register(Inert, ()=>{})
 
 server.route({
     method: 'GET',
@@ -19,6 +27,18 @@ server.route({
         reply('server is listening')
     }
 })
+
+server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+        directory: {
+            path: '.',
+            redirectToSlash: true,
+            index: true
+        }
+    }
+});
 
 server.route({
     method: 'GET',
