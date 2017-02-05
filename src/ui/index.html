@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Moogsoft graph visualisation tool</title>
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    </head>
+    <body>
+        <div id="graph-container"></div>
+        <div id="control-pane">
+            <h2 class="underline">filters</h2>
+
+            <div>
+                <h3>min degree <span id="min-degree-val">0</span></h3>
+                <input id="min-degree" type="range" min="0" max="20" value="0"><span id="max-degree-value">20</span><br>
+            </div>
+            <h3>node category</h3>
+            <button id='addFilter'> add filter </button>
+            <div id="filterContainer">
+            </div>
+
+            <span class="line"></span>
+            <div>
+                <button id="reset-btn">Reset filters</button>
+            </div>
+            <div id="dump" class="hidden"></div>
+        </div>
+
+        <script src='./sigma.min.js'></script>
+        <script src='./sigma.plugins.filter.min.js'></script>
+        <script src='./sigma.parsers.json.min.js'></script>
+        <script src='./jquery-3.1.1.min.js'></script>
+        <script src='./domHelpers.js'></script>
+        <script src='./controller.js'></script>
+    </body>
+</html>
