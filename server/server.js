@@ -24,7 +24,7 @@ server.route({
     method: 'GET',
     path: '/',
     handler: function(request,reply){
-        reply('server is listening')
+        reply('index.html')
     }
 })
 
