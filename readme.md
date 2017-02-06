@@ -1,6 +1,8 @@
 # Multi filter plugin for SigmaJS
 
-This is a plugin for SigmaJS, that provides client-side multifiltering. 
+This is a plugin for SigmaJS, that provides client-side multifiltering, draggable nodes and a modified degree filter that queries the server.  
+
+
 
 To install the dependancies, run from root folder:
 ```
