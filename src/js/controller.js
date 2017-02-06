@@ -88,3 +88,4 @@ $('#reset-btn').click( ()=> {
     render(fetchedData)
 })
 
+var dragListener = sigma.plugins.dragNodes(s, s.renderers[0])
